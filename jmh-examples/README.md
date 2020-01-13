@@ -80,10 +80,15 @@ JMH(Java Micro-benchmark Harness):
 我们在配置Warmup的时候默认的时间是的1s，即1s的执行作为一个Iteration，
 假设每次方法的执行是100ms的话，那么1个Iteration就代表10个Invocation。
 
+## 备注
+1. IDEA 有一个叫`JMH plugin`的插件，但是last-update 是2017，暂时未使用。
+
 ## 参考
-- [Java 并发测试神器：基准测试神器-JMH]
-- [JMH使用说明]
+  - [Java 并发测试神器：基准测试神器-JMH]
+  - [JMH使用说明]
+  - [JMH: 最装逼，最牛逼的基准测试工具套件]
 
 
 [Java 并发测试神器：基准测试神器-JMH]: https://mp.weixin.qq.com/s/JkbtjPnaWNQ57t7MSb1JlQ
 [JMH使用说明]: https://blog.csdn.net/lxbjkben/article/details/79410740
+[JMH: 最装逼，最牛逼的基准测试工具套件]: https://www.jianshu.com/p/0da2988b9846

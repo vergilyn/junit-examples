@@ -12,6 +12,7 @@
         <module>testng-examples</module>
         <module>common-dependency</module>
         <module>jmh-examples</module>
+        <module>swagger-examples</module>
     </modules>
 
     <repositories>
@@ -30,7 +31,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <spring-boot-dependencies.version>2.2.1.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.2.2.RELEASE</spring-boot-dependencies.version>
         <mysql-connector.version>5.1.47</mysql-connector.version>
 
         <google-guava.version>28.2-jre</google-guava.version>
