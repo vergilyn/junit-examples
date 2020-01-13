@@ -3,7 +3,7 @@ package com.vergilyn.examples.testng;
 import java.util.List;
 
 import com.vergilyn.examples.common.JavaTestApplication;
-import com.vergilyn.examples.common.domain.UserEntity;
+import com.vergilyn.examples.common.entity.UserEntity;
 import com.vergilyn.examples.common.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,7 @@ package com.vergilyn.examples.testng.junit;
 import java.util.List;
 
 import com.vergilyn.examples.common.JavaTestApplication;
-import com.vergilyn.examples.common.domain.UserEntity;
+import com.vergilyn.examples.common.entity.UserEntity;
 import com.vergilyn.examples.common.service.UserService;
 
 import org.junit.Test;

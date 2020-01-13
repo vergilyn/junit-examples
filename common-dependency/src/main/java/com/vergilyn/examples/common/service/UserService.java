@@ -2,7 +2,7 @@ package com.vergilyn.examples.common.service;
 
 import java.util.List;
 
-import com.vergilyn.examples.common.domain.UserEntity;
+import com.vergilyn.examples.common.entity.UserEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

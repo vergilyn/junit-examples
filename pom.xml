@@ -38,9 +38,7 @@
         <alibaba-fastjson.version>1.2.62</alibaba-fastjson.version>
         <apache-common-lang3.version>3.9</apache-common-lang3.version>
         <apache-common-io.version>2.6</apache-common-io.version>
-
-        <testng.version>7.1.0</testng.version>
-        <junit.version>4.13</junit.version>
+        <apache-common-text.version>1.8</apache-common-text.version>
     </properties>
 
     <dependencyManagement>
@@ -73,12 +71,7 @@
                 <version>${testng.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -106,6 +99,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>${apache-common-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${apache-common-text.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>

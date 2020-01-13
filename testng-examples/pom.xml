@@ -12,6 +12,10 @@
 
     <artifactId>testng-examples</artifactId>
 
+    <properties>
+        <testng.version>7.1.0</testng.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.vergilyn.examples</groupId>
@@ -22,6 +26,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
         </dependency>
     </dependencies>
 </project>

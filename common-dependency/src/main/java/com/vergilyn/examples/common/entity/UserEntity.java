@@ -1,4 +1,4 @@
-package com.vergilyn.examples.common.domain;
+package com.vergilyn.examples.common.entity;
 
 import lombok.Data;
 import lombok.ToString;
