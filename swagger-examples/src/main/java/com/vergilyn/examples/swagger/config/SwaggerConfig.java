@@ -64,9 +64,9 @@ public class SwaggerConfig extends WebMvcConfigurationSupport implements Environ
     return new ApiInfoBuilder()
       .title("vergilyn-swagger-examples")
       .description("vergilyn swagger演示接口")
-      .contact(new Contact("vergilyn", null, null))
-      .license("Apache 2.0")
-      .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+      .contact(new Contact("vergilyn", "https://github.com/vergilyn", "vergilyn@vip.qq.com"))
+      .license("")
+      .licenseUrl("")
       .version("1.0.0")
       .build();
   }
