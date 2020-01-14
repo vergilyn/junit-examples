@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.vergilyn.examples.official;
+package org.openjdk.jmh.samples;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.runner.Runner;

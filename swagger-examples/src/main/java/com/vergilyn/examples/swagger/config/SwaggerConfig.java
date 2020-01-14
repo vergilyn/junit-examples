@@ -20,6 +20,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
  * Swagger配置类
+ *
+ * @see <a href="https://github.com/binarywang/weixin-java-pay-demo/blob/master/src/main/java/com/github/binarywang/demo/wx/pay/config/SwaggerConfig.java">SwaggerConfig</a>
  */
 @Configuration
 @EnableSwagger2

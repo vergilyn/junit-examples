@@ -28,10 +28,18 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
  *  2） 预热执行结束之后进行5次实际测量执行，每隔1秒进行一次实际执行，
  *  3) 我们此次基准测试测量的是平均响应时长，单位是us。
  * </pre>
+ *
+ * <pre>
+ *   2020-01-14:
+ *     针对该基准测试，以下代码可能互相影响导致结果差异较大。
+ *     建议参考代码{@linkplain org.openjdk.jmh.samples.JMHSample_26_BatchSize}
+ * </pre>
  * @author VergiLyn
  * @date 2020-01-13
  * @see <a href="https://mp.weixin.qq.com/s/JkbtjPnaWNQ57t7MSb1JlQ">Java 并发测试神器：基准测试神器-JMH</a>
+ *
  * @see org.openjdk.jmh.annotations.Setup
+ * @see org.openjdk.jmh.samples.JMHSample_26_BatchSize
  */
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)  // 预热5次，每次间隔1s
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)  // 测试5次，每次间隔1s

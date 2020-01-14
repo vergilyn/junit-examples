@@ -13,37 +13,48 @@ JMH(Java Micro-benchmark Harness):
 
 和其他竞品相比——如果有的话，JMH最有特色的地方就是，它是由Oracle内部实现JIT的那拨人开发的。
 
-
 **JMH比较典型的应用场景有：**
 1) 想准确的知道某个方法需要执行多长时间，以及执行时间和输入之间的相关性；
 2) 对比接口不同实现在给定条件下的吞吐量；
 3) 查看多少百分比的请求在多长时间内完成；
 
 ## 概念
+<font color="red">JMH 利用maven的plugin，会在`/target/`生成测试class文件代码。</font>
 
 ### 预热 warm-up
 为什么要预热？  
 因为 JVM 的 JIT 机制的存在，如果某个函数被调用多次之后，JVM 会尝试将其编译成为机器码从而提高执行速度。
 为了让 benchmark 的结果更加接近真实情况就需要进行预热。
 
+### Mode
+Mode 表示 JMH 进行 Benchmark 时所使用的模式。
+  - Throughput: 整体吞吐量，例如“1秒内可以执行多少次调用”。
+  - AverageTime: 调用的平均时间，例如“每次调用平均耗时xxx毫秒”。
+  - SampleTime: 随机取样，最后输出取样结果的分布，例如“99%的调用在xxx毫秒以内，99.99%的调用在xxx毫秒以内”
+  - SingleShotTime: 以上模式都是默认一次 iteration 是 1s，唯有 SingleShotTime 是只运行一次。往往同时把 warmup 次数设为0，用于测试冷启动时的性能。
+
+### Iteration
+Iteration 是 JMH 进行测试的最小单位。  
+在大部分模式下，一次 iteration 代表的是一秒，JMH 会在这一秒内不断调用需要 benchmark 的方法，然后根据模式对其采样，计算吞吐量，计算平均执行时间等。
+
 ## Annotations
 - [Java 并发测试神器：基准测试神器-JMH]
 
-### `@Benchmark`
+### `@Benchmark`, Method
 `@Benchmark`标签是用来标记测试方法的，只有被这个注解标记的话，该方法才会参与基准测试。
 **但是有一个基本的原则就是被@Benchmark标记的方法必须是public的。**
 
-### `@Warmup`
+### `@Warmup`, Class / Method
 `@Warmup`用来配置预热的内容，可用于类或者方法上，越靠近执行方法的地方越准确。一般配置warmup的参数有这些：
   - iterations: 预热的次数。
   - time: 每次预热的间隔时间。
   - timeUnit: 时间单位，默认是s。
   - batchSize: 批处理大小，每次操作调用几次方法。
 
-### `@Measurement`
+### `@Measurement`, Class / Method
 用来控制实际执行的内容，配置的选项与`@Warmup`基本一样。
 
-### `@BenchmarkMode`
+### `@BenchmarkMode`, Class / Method
 `@BenchmarkMode主`要是表示测量的纬度，有以下这些纬度可供选择：
   - Mode.Throughput: 吞吐量纬度
   - Mode.AverageTime: 平均时间
@@ -57,7 +68,7 @@ JMH(Java Micro-benchmark Harness):
 
 该注解可以用在方法级别和类级别，当用在类级别的时候会被更加精确的方法级别的注解覆盖，原则就是离目标更近的注解更容易生效。
 
-### `@State`
+### `@State`, Class
 在很多时候我们需要维护一些状态内容，比如在多线程的时候我们会维护一个共享的状态，这个状态值可能会在每隔线程中都一样，也有可能是每个线程都有自己的状态，JMH为我们提供了状态的支持。  
 **该注解只能用来标注在类上，因为类作为一个属性的载体。**
 
