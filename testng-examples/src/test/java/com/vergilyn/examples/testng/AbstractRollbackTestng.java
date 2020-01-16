@@ -12,7 +12,7 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
  */
 @ActiveProfiles("development")
 @ContextConfiguration(locations = {"classpath:applicationContext-test-main.xml" })
-public abstract class AbstractTestngRollback extends AbstractTransactionalTestNGSpringContextTests {
+public abstract class AbstractRollbackTestng extends AbstractTransactionalTestNGSpringContextTests {
 
     /* 多数据源需要指定回滚的数据源是哪个; */
     @Override

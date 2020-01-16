@@ -32,14 +32,16 @@
         <java.version>1.8</java.version>
 
         <spring-boot-dependencies.version>2.2.2.RELEASE</spring-boot-dependencies.version>
+        <projectlombok.version>1.18.10</projectlombok.version>
+
         <mysql-connector.version>5.1.47</mysql-connector.version>
 
         <google-guava.version>28.2-jre</google-guava.version>
-        <projectlombok.version>1.18.10</projectlombok.version>
         <alibaba-fastjson.version>1.2.62</alibaba-fastjson.version>
         <apache-common-lang3.version>3.9</apache-common-lang3.version>
         <apache-common-io.version>2.6</apache-common-io.version>
         <apache-common-text.version>1.8</apache-common-text.version>
+        <apache-common-httpclient.version>4.5.10</apache-common-httpclient.version>
     </properties>
 
     <dependencyManagement>
@@ -65,14 +67,11 @@
                 <version>${apache-common-io.version}</version>
             </dependency>
 
-            <!-- test -->
             <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>${testng.version}</version>
-                <scope>test</scope>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache-common-httpclient.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 

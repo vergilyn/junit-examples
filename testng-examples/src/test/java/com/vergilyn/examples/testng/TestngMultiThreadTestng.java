@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @TestExecutionListeners({})
-public class TestngMultiThreadTest extends AbstractTestng {
+public class TestngMultiThreadTestng {
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 
     @BeforeClass

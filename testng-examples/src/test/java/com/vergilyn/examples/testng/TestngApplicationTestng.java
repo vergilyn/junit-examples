@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 /**
  * TestNG并发测试<br/>
  * <ul>
- *     <li>{@link AbstractTransactionalTestNGSpringContextTests}: 自动回滚事务。多数据源处理参考{@link AbstractTestngRollback}</li>
+ *     <li>{@link AbstractTransactionalTestNGSpringContextTests}: 自动回滚事务。多数据源处理参考{@link AbstractRollbackTestng}</li>
  *     <li>{@link AbstractTestNGSpringContextTests}: 自动提交事务。暂时不知道怎么回滚事务，{@link Transactional}、{@link Rollback}并不能回滚事务</li>
  * </ul>
  * @author VergiLyn
@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
  * @date 2018/4/16
  */
 @SpringBootTest(classes= JavaTestApplication.class)
-public class TestngApplicationTest extends AbstractTestNGSpringContextTests {
+public class TestngApplicationTestng {
     @Autowired
     private UserService testService;
 
