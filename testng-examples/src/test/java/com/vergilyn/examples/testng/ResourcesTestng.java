@@ -15,10 +15,13 @@ import org.testng.annotations.Test;
 @Slf4j
 public class ResourcesTestng {
 
+    /**
+     * 读取`src/test/resources`下的文件
+     */
     @Test
     public void readResources(){
-        InputStream in = this.getClass().getResourceAsStream("/data.json");
-        try {
+        try(InputStream in = this.getClass().getResourceAsStream("/data.json")) {
+
             String data = IOUtils.toString(in, Charset.defaultCharset());
             System.out.println(data);
         } catch (IOException e) {
