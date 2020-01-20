@@ -10,17 +10,23 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>testng-examples</artifactId>
+    <artifactId>spring-boot-test-examples</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
+            <groupId>com.vergilyn.examples</groupId>
+            <artifactId>common-dependency</artifactId>
+            <version>${project.version}</version>
         </dependency>
+
     </dependencies>
 </project>

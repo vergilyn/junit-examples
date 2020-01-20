@@ -1,4 +1,4 @@
-package com.vergilyn.examples.testng;
+package com.vergilyn.examples;
 
 import javax.sql.DataSource;
 

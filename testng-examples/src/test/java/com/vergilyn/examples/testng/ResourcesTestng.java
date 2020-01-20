@@ -21,7 +21,7 @@ public class ResourcesTestng {
     @Test
     public void readResources(){
         try(InputStream in = this.getClass().getResourceAsStream("/data.json")) {
-
+            log.info("11111111111");
             String data = IOUtils.toString(in, Charset.defaultCharset());
             System.out.println(data);
         } catch (IOException e) {

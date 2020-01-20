@@ -1,4 +1,4 @@
-package com.vergilyn.examples.testng;
+package com.vergilyn.examples;
 
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
@@ -11,6 +11,6 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 @ActiveProfiles("development")
 @ContextConfiguration(locations = { "classpath:applicationContext-test-main.xml" })
 // @TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
-public abstract class AbstractTestng extends AbstractTestNGSpringContextTests {
+public abstract class AbstractSpringTestng extends AbstractTestNGSpringContextTests {
 
 }

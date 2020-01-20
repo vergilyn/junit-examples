@@ -3,29 +3,34 @@ package com.vergilyn.examples.testng;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.test.context.TestExecutionListeners;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@TestExecutionListeners({})
+@Slf4j
 public class TestngMultiThreadTestng {
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 
     @BeforeClass
     public void beforeClass(){
-        System.out.println("Start Time: " + df.format(new Date()));
+        log.info("Start Time: {}", df.format(new Date()));
     }
 
+    /**
+     * dataProvider：并行运行的数据源 <br/>
+     * threadPoolSize：多少个线程运行，前提invocationCount非空 <br/>
+     * invocationCount：每个线程调用的次数 <br/>
+     */
     @Test(enabled=true, dataProvider="testdp", threadPoolSize=2, invocationCount=5)
     public void test(String dpNumber) throws InterruptedException {
-        System.out.println("Current Thread Id: " + Thread.currentThread().getId() + ". Dataprovider number: "+ dpNumber);
+        log.info("Current Thread Id: {}, Dataprovider number: {}", Thread.currentThread().getId(), dpNumber);
         Thread.sleep(5000);
     }
 
     @DataProvider(name = "testdp", parallel = true)
-    public static Object[][]testdp(){
+    public Object[][] testdp(){
 
         return new Object[][]{
                 {"1"},
@@ -35,6 +40,6 @@ public class TestngMultiThreadTestng {
 
     @AfterClass
     public void afterClass(){
-        System.out.println("End Time: " + df.format(new Date()));
+        log.info("End Time: {}", df.format(new Date()));
     }
 }

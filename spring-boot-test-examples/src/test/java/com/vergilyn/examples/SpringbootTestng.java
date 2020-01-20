@@ -1,4 +1,4 @@
-package com.vergilyn.examples.testng;
+package com.vergilyn.examples;
 
 import java.util.List;
 
@@ -6,13 +6,13 @@ import com.vergilyn.examples.common.JavaTestApplication;
 import com.vergilyn.examples.common.entity.UserEntity;
 import com.vergilyn.examples.common.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.springframework.transaction.annotation.Transactional;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -26,32 +26,17 @@ import org.testng.annotations.Test;
  * @date 2018/4/16
  */
 @SpringBootTest(classes= JavaTestApplication.class)
-public class TestngApplicationTestng {
+@Slf4j
+public class SpringbootTestng {
     @Autowired
     private UserService testService;
 
-    /**
-     * dataProvider：并行运行的数据源 <br/>
-     * threadPoolSize：多少个线程运行，前提invocationCount非空 <br/>
-     * invocationCount：每个线程调用的次数 <br/>
-     * @param username
-     */
-    @Test(enabled=true, dataProvider="testdp",threadPoolSize=2, invocationCount=5)
+    @Test(threadPoolSize=2, invocationCount=5)
     public void testService(String username){
         testService.save(username);
 
         List<UserEntity> users = testService.get(username);
-        System.out.println(users);
+        log.info("users: {}", users);
     }
 
-
-    /**
-     * 如果testService(String, int, Date) -> new Object[][]{{"username-01", 124, new Date()}, {"username-02", 248, new Date()}};
-     * @return
-     */
-    @DataProvider(name = "testdp", parallel = true)
-    public static Object[][] testdp() {
-
-        return new Object[][]{{"username-01"}, {"username-02"}};
-    }
 }

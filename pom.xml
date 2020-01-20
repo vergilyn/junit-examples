@@ -13,6 +13,7 @@
         <module>common-dependency</module>
         <module>jmh-examples</module>
         <module>swagger-examples</module>
+        <module>spring-boot-test-examples</module>
     </modules>
 
     <repositories>
@@ -42,6 +43,8 @@
         <apache-common-io.version>2.6</apache-common-io.version>
         <apache-common-text.version>1.8</apache-common-text.version>
         <apache-common-httpclient.version>4.5.10</apache-common-httpclient.version>
+
+        <testng.version>7.1.0</testng.version>
     </properties>
 
     <dependencyManagement>
@@ -72,16 +75,28 @@
                 <artifactId>httpclient</artifactId>
                 <version>${apache-common-httpclient.version}</version>
             </dependency>
+
+            <!-- test -->
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <scope>test</scope>
+                <version>${testng.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <!-- test -->
+        <!-- spring-boot-starter-test 包含logger的依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <version>${spring-boot-dependencies.version}</version>
         </dependency>
+
 
         <!-- utils -->
         <dependency>
