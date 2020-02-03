@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- IDEA 中直接右键运行xml, 最终输出结果:
+  class: Official_Groups_1_Testng, method: testMethod1
+
+  class: Official_Groups_1_Testng, method: testMethod2
+
+  class: Official_Groups_1_Testng, method: testMethod3
+-->
+<suite name="suite-official_groups_1">
+    <test name="Test1">
+
+        <groups>
+            <!-- 指定运行的group
+              1. 支持指定multi-groups
+              2. 如果method属于multi-groups，并且multi-groups都被指定运行，该method只会执行一次。
+            -->
+            <run>
+                <include name="functest"/>
+
+                <!-- 支持 regular-expressions
+                    <include name=".*test"/>
+                -->
+
+                <!-- 排出运行的group
+                    <exclude name=""/>
+                -->
+            </run>
+        </groups>
+
+        <classes>
+            <!-- 指定加载group的class -->
+            <class name="com.vergilyn.examples.testng.groups.Official_Groups_1_Testng"/>
+        </classes>
+    </test>
+</suite>

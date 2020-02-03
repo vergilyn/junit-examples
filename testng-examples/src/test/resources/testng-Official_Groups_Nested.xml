@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- 5.3 - Groups of groups
+Groups can also include other groups.
+IDEA 中直接右键运行xml, 最终输出结果:
+    class: Official_Groups_2_Testng, method: testLinuxOnly
+
+    class: Official_Groups_2_Testng, method: testUnixOnly
+
+    class: Official_Groups_2_Testng, method: testWindowsOnly
+
+    class: Official_Groups_2_Testng, method: testWindowsToo
+-->
+<suite name="suite-official_groups_3">
+    <test name="Regression1">
+
+        <groups>
+            <!-- MetaGroups, functest -->
+            <define name="functest">
+                <include name="windows.*"/>
+                <include name="linux.*"/>
+            </define>
+
+            <!-- MetaGroups, all -->
+            <define name="all">
+                <include name="functest"/> <!-- 引用`MetaGroups` -->
+                <include name="unix.*"/>
+            </define>
+
+            <run>
+                <include name="all"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.vergilyn.examples.testng.groups.Official_Groups_2_Testng"/>
+        </classes>
+    </test>
+</suite>

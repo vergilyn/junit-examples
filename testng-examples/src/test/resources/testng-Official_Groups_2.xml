@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- IDEA 中直接右键运行xml, 最终输出结果:
+    class: Official_Groups_2_Testng, method: testWindowsOnly
+
+    class: Official_Groups_2_Testng, method: testWindowsToo
+-->
+<suite name="suite-official_groups_1">
+    <test name="Test1">
+
+        <groups>
+            <run>
+                <!--
+                   TestNG uses regular expressions, and not wildmats. Be aware of the difference
+                -->
+                <include name="windows.*"/>
+            </run>
+        </groups>
+
+        <classes>
+            <!-- 指定加载group的class -->
+            <class name="com.vergilyn.examples.testng.groups.Official_Groups_2_Testng"/>
+        </classes>
+    </test>
+</suite>
