@@ -21,17 +21,33 @@ JMH(Java Micro-benchmark Harness):
 ## 概念
 <font color="red">JMH 利用maven的plugin，会在`/target/`生成测试class文件代码。</font>
 
++ [JMH使用指南](https://blog.csdn.net/xiandafu/article/details/94029094)
+
+2020-05-07 TODO >>>>  
+1. 配置含义 `org.openjdk.jmh.runner.options.OptionsBuilder`
+2. 注解配置 与 Option属性配置区别
+3. @TearDown 貌似不满足 类似 AfterTest 逻辑，怎么办？
+
+备注:  
+1. run options(OptionsBuilder) 优先级**貌似高于** 注解。
+
 ### 预热 warm-up
 为什么要预热？  
 因为 JVM 的 JIT 机制的存在，如果某个函数被调用多次之后，JVM 会尝试将其编译成为机器码从而提高执行速度。
 为了让 benchmark 的结果更加接近真实情况就需要进行预热。
 
-### Mode
+### Mode (IMPORTANT)
 Mode 表示 JMH 进行 Benchmark 时所使用的模式。
   - Throughput: 整体吞吐量，例如“1秒内可以执行多少次调用”。
   - AverageTime: 调用的平均时间，例如“每次调用平均耗时xxx毫秒”。
   - SampleTime: 随机取样，最后输出取样结果的分布，例如“99%的调用在xxx毫秒以内，99.99%的调用在xxx毫秒以内”
   - SingleShotTime: 以上模式都是默认一次 iteration 是 1s，唯有 SingleShotTime 是只运行一次。往往同时把 warmup 次数设为0，用于测试冷启动时的性能。
+
+`Throughput`, `AverageTime`, `SampleTime`, `All`: **This mode is <font color="red">time-based</font>, and it will run until the iteration time expires.**  
+即迭代执行iterations次，每次执行timeout，然后计算。
+
+`SingleShotTime`: **This mode is <font color="red">work-based</font>, and will run only for a single invocation of Benchmark method.**
+即迭代执行iterations次，每次执行batchSize，这样就可以预估最后的调用次数，EX. `JmhEstimateTest.java`
 
 ### Iteration
 Iteration 是 JMH 进行测试的最小单位。  
