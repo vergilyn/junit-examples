@@ -23,7 +23,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @OutputTimeUnit(TimeUnit.MICROSECONDS) // 输出结果的时间粒度为微秒
 @State(Scope.Thread) // 每个测试线程一个实例
 @Slf4j
-public class JMHSampleTest {
+public class JmhSampleTest {
 
     @Benchmark
     public String stringConcat() {
@@ -38,7 +38,7 @@ public class JMHSampleTest {
     public static void main(String[] args) throws RunnerException {
         // 使用一个单独进程执行测试，执行5遍warm-up，然后执行5遍测试
         Options opt = new OptionsBuilder()
-                .include(JMHSampleTest.class.getSimpleName())
+                .include(JmhSampleTest.class.getSimpleName())
                 .forks(1)   // 执行线程数
                 .warmupIterations(5)    // 预热次数
                 .measurementIterations(5)   // 测试次数

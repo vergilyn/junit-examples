@@ -8,43 +8,48 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>junit-examples</module>
         <module>testng-examples</module>
         <module>common-dependency</module>
         <module>jmh-examples</module>
         <module>swagger-examples</module>
         <module>spring-boot-test-examples</module>
+        <module>testng-spring-boot-examples</module>
+        <module>junit-examples</module>
+        <module>jupiter-examples</module>
+        <module>junit-testcontainers-examples</module>
+        <module>jupiter-testcontainers-examples</module>
     </modules>
-
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <spring-boot-dependencies.version>2.2.2.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.2.11.RELEASE</spring-boot-dependencies.version>
         <projectlombok.version>1.18.10</projectlombok.version>
-
-        <mysql-connector.version>5.1.47</mysql-connector.version>
-
-        <google-guava.version>28.2-jre</google-guava.version>
+        <google-guava.version>30.0-jre</google-guava.version>
         <alibaba-fastjson.version>1.2.62</alibaba-fastjson.version>
         <apache-common-lang3.version>3.9</apache-common-lang3.version>
+
+        <apache-common-text.version>1.9</apache-common-text.version>
         <apache-common-io.version>2.6</apache-common-io.version>
-        <apache-common-text.version>1.8</apache-common-text.version>
+        <apache-common-beanutils.version>1.9.4</apache-common-beanutils.version>
+        <apache-common-fileupload.version>1.4</apache-common-fileupload.version>
         <apache-common-httpclient.version>4.5.10</apache-common-httpclient.version>
+        <apache-common-collections4.version>4.4</apache-common-collections4.version>
+        <apache-common-codec.version>1.15</apache-common-codec.version>
+
+        <jedis.version>3.3.0</jedis.version>
+
+        <slf4j.version>1.7.30</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
 
         <testng.version>7.1.0</testng.version>
+        <junit.version>4.13.1</junit.version>
+        <jupiter.version>5.7.0</jupiter.version>
+
+        <testcontainers.version>1.15.0</testcontainers.version>
+        <jna.version>5.5.0</jna.version>
     </properties>
 
     <dependencyManagement>
@@ -58,45 +63,134 @@
             </dependency>
 
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql-connector.version}</version>
-                <scope>runtime</scope>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${apache-common-text.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${apache-common-beanutils.version}</version>
+            </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${apache-common-io.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${apache-common-fileupload.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>${apache-common-httpclient.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${apache-common-codec.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
 
             <!-- test -->
+            <!-- spring-boot-starter-test 包含logger的依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <scope>test</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
-                <scope>test</scope>
                 <version>${testng.version}</version>
+                <scope>test</scope>
             </dependency>
 
+            <!-- junit4 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- junit5 -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- testcontainers -->
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- testcontainers, NoSuchMethodException -->
+            <dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna</artifactId>
+                <version>${jna.version}</version>
+                <!--<scope>compile</scope>-->
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <!-- test -->
-        <!-- spring-boot-starter-test 包含logger的依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${projectlombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-logging</artifactId>
             <version>${spring-boot-dependencies.version}</version>
         </dependency>
 
+        <!-- logger -->
+        <!--<dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>-->
 
         <!-- utils -->
         <dependency>
@@ -105,27 +199,21 @@
             <version>${google-guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${alibaba-fastjson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${apache-common-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${apache-common-text.version}</version>
+            <artifactId>commons-collections4</artifactId>
+            <version>${apache-common-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${alibaba-fastjson.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${projectlombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>

@@ -1,4 +1,4 @@
-package com.vergilyn.examples.testng;
+package com.vergilyn.examples.testng.springboot;
 
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;

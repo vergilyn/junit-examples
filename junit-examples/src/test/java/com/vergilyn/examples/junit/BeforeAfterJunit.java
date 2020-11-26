@@ -1,4 +1,4 @@
-package com.vergilyn.examples.testng.junit;
+package com.vergilyn.examples.junit;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,12 +24,11 @@ import org.junit.runners.model.Statement;
  |　是否执行      | 即使@BeforeClass执行异常，@AfterClass也一定会执行   | 即使@Before执行异常，@After也一定会执行                                            |
  |　跟@Repeat配合 | 执行一次
  * </pre>
- * @author VergiLyn
- * @blog http://www.cnblogs.com/VergiLyn/
- * @date 2018/5/8
+ * @author vergilyn
+ * @since 2020-11-25
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class BeforeAfter {
+public class BeforeAfterJunit {
     private static int before = 0;
     private static int beforeClass = 0;
 

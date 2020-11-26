@@ -1,8 +1,7 @@
-package com.vergilyn.examples;
+package com.vergilyn.examples.testng.springboot;
 
 import java.util.List;
 
-import com.vergilyn.examples.common.JavaTestApplication;
 import com.vergilyn.examples.common.entity.UserEntity;
 import com.vergilyn.examples.common.service.UserService;
 
@@ -17,20 +16,20 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
  * @date 2020-05-07
  * @see <a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-testing">boot-features-testing</a>
  */
-@SpringBootTest(classes = JavaTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest(classes = TestngSpringbootApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Slf4j
-public class SpringbootTestng extends AbstractTestNGSpringContextTests {
-    @Autowired
-    private UserService testService;
+public class TestngSpringbootTestng {
 
-    // spring boot 2.x 依赖 junit 5.x
-    @org.testng.annotations.Test
-    public void testService() {
-        String username = "vergilyn";
-        testService.save(username);
+	// FIXME 2020-11-25
+	@Autowired
+	private UserService testService;
 
-        List<UserEntity> users = testService.get(username);
-        log.info("users: {}", users);
-    }
+	@org.testng.annotations.Test
+	public void testService() {
+		String username = "vergilyn";
+		testService.save(username);
 
+		List<UserEntity> users = testService.get(username);
+		log.info("users: {}", users);
+	}
 }
