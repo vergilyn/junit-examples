@@ -1,0 +1,5 @@
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+com.vergilyn.examples.mockito.simulate.StartupSlowRunListener
+
+
