@@ -7,6 +7,7 @@ import org.apache.dubbo.rpc.ProxyFactory;
 import org.apache.dubbo.rpc.protocol.dubbo.DubboProtocol;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
@@ -29,6 +30,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
  * @see <a href="https://github.com/apache/dubbo/blob/dubbo-2.7.8/dubbo-monitor/dubbo-monitor-default/src/test/java/org/apache/dubbo/monitor/dubbo/DubboMonitorFactoryTest.java">DubboMonitorFactoryTest</a>
  */
 @SuppressWarnings({ "ResultOfMethodCallIgnored", "unchecked" })
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UsageArgumentCaptorTest {
 	private DubboMonitorFactory dubboMonitorFactory;
 

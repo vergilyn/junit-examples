@@ -35,7 +35,13 @@ public class ArgumentCaptorTest {
 		System.out.printf("basic() >>>> arg: %d, captor.value: %d \n", arg, argumentCaptor.getValue());
 
 		Assertions.assertEquals(arg, argumentCaptor.getValue());
-		Assertions.assertEquals(0, argumentCaptor.capture());
+
+		/* FIXME 取消注释，`Run All Tests` 会有错误！
+		 *
+		 * Also, this error might show up because you use argument matchers with methods that cannot be mocked.
+		 */
+		//
+		// Assertions.assertEquals(0, argumentCaptor.capture());
 	}
 
 }

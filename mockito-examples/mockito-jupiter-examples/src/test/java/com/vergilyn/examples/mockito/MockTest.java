@@ -11,6 +11,8 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 /**
  * {@linkplain Mockito#mock(Class)}} 操作的全是`仿造`的虚假对象，
@@ -36,7 +38,7 @@ public class MockTest {
 		
 		// 设置预期，当调用 get(0) 方法时返回 "vergilyn"
 		// 该方法就是 Stub，替换实际的操作 `java.util.List#get()`。
-		Mockito.when(list.get(0)).thenReturn(_name);
+		when(list.get(0)).thenReturn(_name);
 
 		assertEquals(list.get(0), _name);
 
@@ -56,17 +58,35 @@ public class MockTest {
 	}
 
 	@Test
+	public void voidMethod(){
+		List<String> list = Mockito.mock(List.class);
+
+		Mockito.doNothing().when(list).clear();
+		list.clear();
+
+		Mockito.verify(list, times(1)).clear();
+	}
+
+	/**
+	 * @see StaticMethodMockTest
+	 */
+	@Test
+	public void staticMethod(){
+
+	}
+
+	@Test
 	@Description("Sets a return value to be returned when the method is called.")
 	public void thenReturn(){
 		List<Integer> list = Mockito.mock(List.class);
 
 		// 第1次调用 get(0) 返回`1`，第1次调用 get(0) 返回`2`。依次类推
-		Mockito.when(list.get(0)).thenReturn(1).thenReturn(2);
+		when(list.get(0)).thenReturn(1).thenReturn(2);
 		assertEquals(1, list.get(0));
 		assertEquals(2, list.get(0));
 
 		// 不同的写法
-		Mockito.when(list.get(0)).thenReturn(3, 4, 5);
+		when(list.get(0)).thenReturn(3, 4, 5);
 		assertEquals(3, list.get(0));
 		assertEquals(4, list.get(0));
 		assertEquals(5, list.get(0));

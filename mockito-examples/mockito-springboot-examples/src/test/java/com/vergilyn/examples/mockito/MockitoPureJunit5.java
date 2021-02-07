@@ -38,6 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @see org.mockito.exceptions.misusing.UnnecessaryStubbingException
  */
 /* junit4: `@RunWith(MockitoJUnitRunner.class)`
+ * junit5: `@ExtendWith(MockitoExtension.class)`
  *
  * 如果不指定，会导致LoginService无法注入到LoginController，
  * 但LoginConfigDao可以成功注入到LoginService。
@@ -58,7 +59,7 @@ public class MockitoPureJunit5 {
 	private LoginController loginController;
 
 	// @Mock  // 不会调用 real-method
-	@Spy
+	@Spy  // 因为该注解，loginController中才能注入loginService
 	@InjectMocks  // 因为该注解，才会注入下面mock的LoginConfigDao
 	private LoginService loginService;
 	@Mock
