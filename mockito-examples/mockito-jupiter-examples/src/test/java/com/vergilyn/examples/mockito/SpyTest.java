@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.times;
 
 /**
  * @author vergilyn
@@ -49,5 +50,8 @@ public class SpyTest {
 		// optionally, you can verify
 		Mockito.verify(spy, atLeastOnce()).add("one");
 		Mockito.verify(spy, atLeastOnce()).add("two");
+
+		Mockito.verify(spy, times(2)).size();
+
 	}
 }
