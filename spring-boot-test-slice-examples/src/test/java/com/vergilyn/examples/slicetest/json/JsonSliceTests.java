@@ -1,9 +1,8 @@
-package com.vergilyn.examples.annotation.json;
+package com.vergilyn.examples.slicetest.json;
 
-import com.vergilyn.examples.annotation.json.app.ExampleBasicObject;
-import com.vergilyn.examples.annotation.json.app.ExampleCustomObject;
-import com.vergilyn.examples.annotation.json.app.ExampleJsonApplication;
-import com.vergilyn.examples.annotation.json.app.ExampleJsonObjectWithView;
+import com.vergilyn.examples.slicetest.json.app.ExampleBasicObject;
+import com.vergilyn.examples.slicetest.json.app.ExampleCustomObject;
+import com.vergilyn.examples.slicetest.json.app.ExampleJsonObjectWithView;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +18,18 @@ import org.springframework.test.context.ContextConfiguration;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @see <a href="https://github.com/spring-projects/spring-boot/blob/v2.2.11.RELEASE/spring-boot-project/spring-boot-test-autoconfigure/src/test/java/org/springframework/boot/test/autoconfigure/json/JsonTestIntegrationTests.java">JsonTestIntegrationTests.java</a>
- * @see <a href="https://docs.spring.io/spring-boot/docs/2.2.11.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests">Auto-configured Tests</a>
+ *
+ * @author vergilyn
+ * @since 2021-05-28
+ *
+ * @see <a href="https://docs.spring.io/spring-boot/docs/2.2.11.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests">
+ *          Auto-configured Tests</a>
+ * @see <a href="https://github.com/spring-projects/spring-boot/tree/v2.2.11.RELEASE/spring-boot-project/spring-boot-test-autoconfigure/src/test/java/org/springframework/boot/test/autoconfigure/json">
+ *          github, `@JsonTest` examples</a>
  */
 @JsonTest
-@ContextConfiguration(classes = ExampleJsonApplication.class)
-public class JsonTestIntegrationTests {
-
+@ContextConfiguration(classes = JsonSliceApplication.class)
+public class JsonSliceTests {
 	@Autowired
 	private BasicJsonTester basicJson;
 
@@ -90,5 +94,4 @@ public class JsonTestIntegrationTests {
 		assertThat(content).doesNotHaveJsonPathValue("id");
 		assertThat(content).isEqualToJson("example.json");
 	}
-
 }

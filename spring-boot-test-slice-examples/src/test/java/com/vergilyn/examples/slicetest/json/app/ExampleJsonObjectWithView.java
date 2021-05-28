@@ -1,4 +1,4 @@
-package com.vergilyn.examples.annotation.json.app;
+package com.vergilyn.examples.slicetest.json.app;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

@@ -1,4 +1,4 @@
-package com.vergilyn.examples.annotation.json.app;
+package com.vergilyn.examples.slicetest.json.app;
 
 /**
  * Example object to read/write as JSON via {@link ExampleJsonComponent}.

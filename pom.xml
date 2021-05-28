@@ -19,6 +19,8 @@
         <module>junit-testcontainers-examples</module>
         <module>jupiter-testcontainers-examples</module>
         <module>mockito-examples</module>
+        <module>assert-examples</module>
+        <module>spring-boot-test-slice-examples</module>
     </modules>
 
     <properties>
@@ -53,6 +55,9 @@
 
         <testcontainers.version>1.15.0</testcontainers.version>
         <jna.version>5.5.0</jna.version>
+
+        <hamcrest.version>2.2</hamcrest.version>
+        <assertj.version>3.19.0</assertj.version>
     </properties>
 
     <dependencyManagement>
@@ -162,6 +167,19 @@
                 <!--<scope>compile</scope>-->
             </dependency>
 
+            <!-- assert -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

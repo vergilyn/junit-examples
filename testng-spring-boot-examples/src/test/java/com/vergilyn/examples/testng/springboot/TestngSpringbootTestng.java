@@ -14,11 +14,11 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
  * testng 需要继承 {@linkplain AbstractTestNGSpringContextTests}，之后就可以结合 {@linkplain SpringBootTest}
  * @author vergilyn
  * @date 2020-05-07
- * @see <a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/#boot-features-testing">boot-features-testing</a>
+ * @see <a href="https://docs.spring.io/spring-boot/docs/2.2.11.RELEASE/reference/htmlsingle/#boot-features-testing">boot-features-testing</a>
  */
 @SpringBootTest(classes = TestngSpringbootApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Slf4j
-public class TestngSpringbootTestng {
+public class TestngSpringbootTestng extends AbstractTestNGSpringContextTests {
 
 	// FIXME 2020-11-25
 	@Autowired
