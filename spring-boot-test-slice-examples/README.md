@@ -12,6 +12,14 @@
 > Each of them works in a similar way, providing a `@…Test`(eg. `@DataRedisTest` or `@JsonTest`) annotation
 > that loads the ApplicationContext and one or more `@AutoConfigure…` annotations that can be used to customize auto-configuration settings.
 
+**spring-boot-test slice logger:**
+> [Custom Log Configuration](https://docs.spring.io/spring-boot/docs/2.2.11.RELEASE/reference/htmlsingle/#boot-features-custom-log-configuration)
+> Since logging is initialized before the ApplicationContext is created,  
+> it is not possible to control logging from `@PropertySources` in Spring `@Configuration` files.  
+> The only way to change the logging system or disable it entirely is via System properties.
+>
+> When possible, we recommend that you use the `-spring` variants for your logging configuration(for example, `logback-spring.xml` rather than `logback.xml`).  
+> If you use standard configuration locations, Spring cannot completely control log initialization.
 
 ## Q&A
 ### 例如`@DataRedisTest` 和 `SpringBootApplication`
